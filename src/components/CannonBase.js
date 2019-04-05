@@ -2,11 +2,6 @@ import React from 'react';
 import { pathFromCubicBezierCurve } from '../utils/formulas';
 
 const CannonBase = () => {
-  const style = {
-    fill: '#a16012',
-    stroke: '#75450e',
-    strokeWidth: '2px',
-  };
   const width = 80;
   const halfWidth = 40;
   const height = 60;
@@ -22,7 +17,11 @@ const CannonBase = () => {
   return (
     <g>
       <path
-        style={style}
+        style={{
+          fill: '#f54997',
+          stroke: '#d52977',
+          strokeWidth: '2px',
+        }}
         d={pathFromCubicBezierCurve(cubicBezierCurve)}
       />
       <line
@@ -30,7 +29,7 @@ const CannonBase = () => {
         y1={height}
         x2={halfWidth}
         y2={height}
-        style={style}
+        style={{ stroke: '#d52977', strokeWidth: '2px' }}
       />
     </g>
   );

@@ -2,14 +2,12 @@ import React from 'react';
 import { skyAndGroundWidth } from '../utils/constants';
 
 const Ground = () => {
-  const style = { fill: '#77889c' };
-
   return (
-    <g id="Ground">
+    <g>
       <rect
         id="Ground-bg"
         data-name="ground"
-        style={style}
+        style={{ fill: '#0c101c', stroke: '#242833', strokeWidth: '1px' }}
         x={-(skyAndGroundWidth / 2)}
         y={0}
         width={skyAndGroundWidth}
