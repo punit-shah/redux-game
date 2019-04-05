@@ -32,4 +32,4 @@ export const getCanvasPosition = event => {
 
   const { x, y } = point.matrixTransform(svg.getScreenCTM().inverse());
   return { x, y };
-}
+};
