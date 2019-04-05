@@ -1,14 +1,15 @@
 import React from 'react';
-import { string } from 'prop-types';
+// import { string } from 'prop-types';
+import Canvas from './components/Canvas';
 
-const App = ({ message }) => (
+const App = () => (
   <div className="App">
-    <h1>{message}</h1>
+    <Canvas />
   </div>
 );
 
 App.propTypes = {
-  message: string.isRequired,
+  // message: string.isRequired,
 };
 
 export default App;
