@@ -17,11 +17,7 @@ const CannonBase = () => {
   return (
     <g>
       <path
-        style={{
-          fill: '#f54997',
-          stroke: '#d52977',
-          strokeWidth: '2px',
-        }}
+        style={{ fill: '#f54997', stroke: '#d52977', strokeWidth: '2px' }}
         d={pathFromCubicBezierCurve(cubicBezierCurve)}
       />
       <line

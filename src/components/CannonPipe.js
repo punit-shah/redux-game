@@ -19,11 +19,7 @@ const CannonPipe = ({ rotation }) => {
   return (
     <g transform={transform}>
       <path
-        style={{
-          fill: '#000',
-          stroke: '#f54997',
-          strokeWidth: '2px',
-        }}
+        style={{ fill: '#000', stroke: '#f54997', strokeWidth: '2px' }}
         d={pathFromCubicBezierCurve(cubicBezierCurve)}
       />
       <line
