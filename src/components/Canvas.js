@@ -8,10 +8,11 @@ import CannonBall from './CannonBall';
 import CurrentScore from './CurrentScore';
 import FlyingObject from './FlyingObject';
 import Heart from './Heart';
+import StartGame from './StartGame';
 
 const Canvas = ({ angle, trackMouse }) => {
   const viewBox = [
-    -(window.innerWidth / 2),
+    -window.innerWidth / 2,
     -window.innerHeight + 100,
     window.innerWidth,
     window.innerHeight,
@@ -32,6 +33,11 @@ const Canvas = ({ angle, trackMouse }) => {
       <FlyingObject position={{ x: -150, y: -300 }} />
       <FlyingObject position={{ x: 150, y: -300 }} />
       <Heart position={{ x: window.innerWidth / 2 - 40, y: 45 }} />
+      <StartGame
+        onClick={() => {
+          console.log('start!');
+        }}
+      />
     </svg>
   );
 };
