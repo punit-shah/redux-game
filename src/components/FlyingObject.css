@@ -1,0 +1,15 @@
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.FlyingObject > g {
+  fill: #f54997;
+  animation: rotate 1s linear infinite;
+  transform-origin: 16px 16px;
+}
