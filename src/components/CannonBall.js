@@ -2,12 +2,11 @@ import React from 'react';
 import { shape, number } from 'prop-types';
 
 const CannonBall = ({ position }) => (
-  <ellipse
+  <circle
     style={{ fill: '#f54997', stroke: '#d52977', strokeWidth: '2px' }}
     cx={position.x}
     cy={position.y}
-    rx={16}
-    ry={16}
+    r={16}
   />
 );
 
