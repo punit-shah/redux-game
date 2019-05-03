@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { number, func, shape, bool } from 'prop-types';
+import { number, func, shape, bool, arrayOf } from 'prop-types';
 import Sky from './Sky';
 import Ground from './Ground';
 import CannonPipe from './CannonPipe';
@@ -10,8 +10,7 @@ import StartGame from './StartGame';
 
 const Canvas = forwardRef(
   ({ angle, trackMouse, gameState, startGame }, ref) => {
-    const { started } = gameState;
-    console.log(started);
+    const { started, flyingObjects } = gameState;
 
     const viewBox = [
       -window.innerWidth / 2, // min-x
@@ -35,8 +34,9 @@ const Canvas = forwardRef(
         <CurrentScore score={9000} />
         {started ? (
           <g>
-            <FlyingObject position={{ x: -150, y: -300 }} />
-            <FlyingObject position={{ x: 150, y: -300 }} />
+            {flyingObjects.map(({ id, position }) => (
+              <FlyingObject key={id} position={position} />
+            ))}
           </g>
         ) : (
           <g>
@@ -54,6 +54,15 @@ Canvas.propTypes = {
     started: bool.isRequired,
     kills: number.isRequired,
     lives: number.isRequired,
+    flyingObjects: arrayOf(
+      shape({
+        position: shape({
+          x: number.isRequired,
+          y: number.isRequired,
+        }).isRequired,
+        id: number.isRequired,
+      })
+    ).isRequired,
   }).isRequired,
   startGame: func.isRequired,
   trackMouse: func.isRequired,

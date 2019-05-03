@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react';
-import { number, func, shape, bool } from 'prop-types';
+import { number, func, shape, bool, arrayOf } from 'prop-types';
 import Canvas from './components/Canvas';
 import { getCanvasPosition } from './utils/formulas';
 
@@ -58,6 +58,15 @@ App.propTypes = {
     started: bool.isRequired,
     kills: number.isRequired,
     lives: number.isRequired,
+    flyingObjects: arrayOf(
+      shape({
+        position: shape({
+          x: number.isRequired,
+          y: number.isRequired,
+        }).isRequired,
+        id: number.isRequired,
+      })
+    ).isRequired,
   }).isRequired,
   startGame: func.isRequired,
   moveObjects: func.isRequired,
