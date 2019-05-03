@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { number, func } from 'prop-types';
 import Sky from './Sky';
 import Ground from './Ground';
@@ -10,12 +10,12 @@ import FlyingObject from './FlyingObject';
 import Heart from './Heart';
 import StartGame from './StartGame';
 
-const Canvas = ({ angle, trackMouse }) => {
+const Canvas = forwardRef(({ angle, trackMouse }, ref) => {
   const viewBox = [
-    -window.innerWidth / 2,
-    -window.innerHeight + 100,
-    window.innerWidth,
-    window.innerHeight,
+    -window.innerWidth / 2, // min-x
+    -window.innerHeight + 100, // min-y
+    window.innerWidth, // width
+    window.innerHeight, // height
   ];
   return (
     <svg
@@ -23,6 +23,7 @@ const Canvas = ({ angle, trackMouse }) => {
       preserveAspectRatio="xMaxYMax"
       viewBox={viewBox}
       onMouseMove={trackMouse}
+      ref={ref}
     >
       <Sky />
       <Ground />
@@ -40,7 +41,7 @@ const Canvas = ({ angle, trackMouse }) => {
       />
     </svg>
   );
-};
+});
 
 Canvas.propTypes = {
   angle: number.isRequired,

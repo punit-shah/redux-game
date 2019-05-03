@@ -1,13 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { number, func } from 'prop-types';
 import Canvas from './components/Canvas';
 import { getCanvasPosition } from './utils/formulas';
 
 class App extends Component {
-  componentDidMount() {
-    this.trackMouse = this.trackMouse.bind(this);
+  constructor(props) {
+    super(props);
 
+    this.canvasRef = createRef();
+
+    this.trackMouse = this.trackMouse.bind(this);
+    this.update = this.update.bind(this);
+    this.onResize = this.onResize.bind(this);
+  }
+
+  componentDidMount() {
     this.update();
+    window.addEventListener('resize', this.onResize);
   }
 
   trackMouse(event) {
@@ -17,7 +26,13 @@ class App extends Component {
   update() {
     const { moveObjects } = this.props;
     moveObjects(this.canvasMousePosition);
-    requestAnimationFrame(this.update.bind(this));
+    requestAnimationFrame(this.update);
+  }
+
+  onResize() {
+    const canvas = this.canvasRef.current;
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
   }
 
   render() {
@@ -27,7 +42,8 @@ class App extends Component {
       <div className="App">
         <Canvas
           angle={angle}
-          trackMouse={event => this.trackMouse(event)}
+          trackMouse={this.trackMouse}
+          ref={this.canvasRef}
         />
       </div>
     );
