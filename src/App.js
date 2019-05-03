@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react';
-import { number, func } from 'prop-types';
+import { number, func, shape, bool } from 'prop-types';
 import Canvas from './components/Canvas';
 import { getCanvasPosition } from './utils/formulas';
 
@@ -36,12 +36,14 @@ class App extends Component {
   }
 
   render() {
-    const { angle } = this.props;
+    const { angle, gameState, startGame } = this.props;
 
     return (
       <div className="App">
         <Canvas
           angle={angle}
+          gameState={gameState}
+          startGame={startGame}
           trackMouse={this.trackMouse}
           ref={this.canvasRef}
         />
@@ -52,6 +54,12 @@ class App extends Component {
 
 App.propTypes = {
   angle: number.isRequired,
+  gameState: shape({
+    started: bool.isRequired,
+    kills: number.isRequired,
+    lives: number.isRequired,
+  }).isRequired,
+  startGame: func.isRequired,
   moveObjects: func.isRequired,
 };
 
