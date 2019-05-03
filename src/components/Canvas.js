@@ -1,8 +1,11 @@
 import React from 'react';
+import { number, func } from 'prop-types';
 import Sky from './Sky';
 import Ground from './Ground';
 import CannonPipe from './CannonPipe';
 import CannonBase from './CannonBase';
+import CannonBall from './CannonBall';
+import CurrentScore from './CurrentScore';
 
 const Canvas = ({ angle, trackMouse }) => {
   const viewBox = [
@@ -22,8 +25,15 @@ const Canvas = ({ angle, trackMouse }) => {
       <Ground />
       <CannonPipe rotation={angle} />
       <CannonBase />
+      <CannonBall position={{ x: 0, y: -100 }} />
+      <CurrentScore score={15} />
     </svg>
   );
+};
+
+Canvas.propTypes = {
+  angle: number.isRequired,
+  trackMouse: func.isRequired,
 };
 
 export default Canvas;
