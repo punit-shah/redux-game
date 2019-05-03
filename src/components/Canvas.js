@@ -7,6 +7,7 @@ import CannonBase from './CannonBase';
 import CannonBall from './CannonBall';
 import CurrentScore from './CurrentScore';
 import FlyingObject from './FlyingObject';
+import Heart from './Heart';
 
 const Canvas = ({ angle, trackMouse }) => {
   const viewBox = [
@@ -30,6 +31,7 @@ const Canvas = ({ angle, trackMouse }) => {
       <CurrentScore score={9000} />
       <FlyingObject position={{ x: -150, y: -300 }} />
       <FlyingObject position={{ x: 150, y: -300 }} />
+      <Heart position={{ x: window.innerWidth / 2 - 40, y: 45 }} />
     </svg>
   );
 };

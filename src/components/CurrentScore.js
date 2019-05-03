@@ -6,7 +6,7 @@ const CurrentScore = ({ score }) => (
     <text
       style={{ fontFamily: 'Consolas, monospace', fontSize: 30, fill: '#fff' }}
       x={-window.innerWidth / 2 + 20}
-      y={80}
+      y={60}
     >
       {score}
     </text>
