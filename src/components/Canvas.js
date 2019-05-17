@@ -33,11 +33,9 @@ const Canvas = forwardRef(
         <CannonBase />
         <CurrentScore score={9000} />
         {started ? (
-          <g>
-            {flyingObjects.map(({ id, position }) => (
-              <FlyingObject key={id} position={position} />
-            ))}
-          </g>
+          flyingObjects.map(({ id, position }) => (
+            <FlyingObject key={id} position={position} />
+          ))
         ) : (
           <g>
             <StartGame onClick={() => startGame()} />

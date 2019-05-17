@@ -8,7 +8,21 @@
   }
 }
 
-.FlyingObject > g {
+@keyframes moveVertically {
+  from {
+    transform: translateY(-1100px);
+  }
+
+  to {
+    transform: translateY(100px);
+  }
+}
+
+.FlyingObject {
+  animation: moveVertically 4s linear;
+}
+
+.FlyingObject g {
   fill: #f54997;
   animation: rotate 1s linear infinite;
   transform-origin: 16px 16px;

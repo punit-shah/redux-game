@@ -6,4 +6,4 @@ export const maxFlyingObjects = 4;
 
 export const flyingObjectsStartPositionY = -window.innerHeight + 500;
 
-export const flyingObjectsStartPositionsX = [-300, -150, 150, 300];
+export const flyingObjectsStartPositionsX = [-400, -200, 0, 200, 400];
