@@ -11,6 +11,7 @@ class App extends Component {
 
     this.trackMouse = this.trackMouse.bind(this);
     this.update = this.update.bind(this);
+    this.shoot = this.shoot.bind(this);
     this.onResize = this.onResize.bind(this);
   }
 
@@ -29,6 +30,11 @@ class App extends Component {
     requestAnimationFrame(this.update);
   }
 
+  shoot() {
+    const { shoot } = this.props;
+    shoot(this.canvasMousePosition);
+  }
+
   onResize() {
     const canvas = this.canvasRef.current;
     canvas.style.width = `${window.innerWidth}px`;
@@ -45,6 +51,7 @@ class App extends Component {
           gameState={gameState}
           startGame={startGame}
           trackMouse={this.trackMouse}
+          shoot={this.shoot}
           ref={this.canvasRef}
         />
       </div>
@@ -70,6 +77,7 @@ App.propTypes = {
   }).isRequired,
   startGame: func.isRequired,
   moveObjects: func.isRequired,
+  shoot: func.isRequired,
 };
 
 export default App;

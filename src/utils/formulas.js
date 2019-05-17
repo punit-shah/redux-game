@@ -11,6 +11,8 @@ export const pathFromCubicBezierCurve = ({
 
 export const radiansToDegrees = radians => (radians * 180) / Math.PI;
 
+export const degreesToRadians = degrees => (degrees * Math.PI) / 180;
+
 export const calculateCannonAngle = (x1, y1, x2, y2) => {
   if (x2 >= 0 && y2 >= 0) {
     return 90;
@@ -32,4 +34,16 @@ export const getCanvasPosition = event => {
 
   const { x, y } = point.matrixTransform(svg.getScreenCTM().inverse());
   return { x, y };
+};
+
+export const calculateNextPosition = (x, y, angle, divisor = 300) => {
+  const realAngle = -angle + 90;
+  const stepsX =
+    radiansToDegrees(Math.cos(degreesToRadians(realAngle))) / divisor;
+  const stepsY =
+    radiansToDegrees(Math.sin(degreesToRadians(realAngle))) / divisor;
+  return {
+    x: x + stepsX,
+    y: y - stepsY,
+  };
 };

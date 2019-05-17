@@ -7,10 +7,11 @@ import CannonBase from './CannonBase';
 import CurrentScore from './CurrentScore';
 import FlyingObject from './FlyingObject';
 import StartGame from './StartGame';
+import CannonBall from './CannonBall';
 
 const Canvas = forwardRef(
-  ({ angle, trackMouse, gameState, startGame }, ref) => {
-    const { started, flyingObjects } = gameState;
+  ({ angle, trackMouse, gameState, startGame, shoot }, ref) => {
+    const { started, flyingObjects, cannonBalls } = gameState;
 
     const viewBox = [
       -window.innerWidth / 2, // min-x
@@ -25,10 +26,14 @@ const Canvas = forwardRef(
         preserveAspectRatio="xMaxYMax"
         viewBox={viewBox}
         onMouseMove={trackMouse}
+        onClick={shoot}
         ref={ref}
       >
         <Sky />
         <Ground />
+        {cannonBalls.map(({ id, position }) => (
+          <CannonBall key={id} position={position} />
+        ))}
         <CannonPipe rotation={angle} />
         <CannonBase />
         <CurrentScore score={9000} />
